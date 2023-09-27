@@ -21,9 +21,9 @@ Product.init(
       allowNull: false
     },
     price:{ 
-    type: DataTypes.DECIMAL,
-    allowNull: false,
-    validate: {isDecimal: true}, 
+      type: DataTypes.DECIMAL,
+      allowNull: false,
+      validate: {isDecimal: true}, 
 
     },
     stock:{
@@ -40,7 +40,44 @@ Product.init(
         // This is the column name of the referenced model
         key: 'id', 
       }
+    },
+    tag:{
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      primaryKey: true,
+      autoIncrement: true,
+    },
+    tag_name:{
+      type: DataTypes.STRING,
+    },
+    ProductTag:{
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      primaryKey: true,
+      autoIncrement: true,
+    },
+    product_id:{
+      type: DataTypes.INTEGER,
+      references: {
+        // This is a reference to another model
+        model: Product,
+        // This is the column name of the referenced model
+        key: 'id', 
+         
+       }
+    },
+    tag_id:{
+      type: DataTypes.INTEGER,
+      references: {
+        // This is a reference to another model
+        model: Tag,
+        // This is the column name of the referenced model
+        key: 'id',
+      }
+
+        
     }
+
   },
 
   {

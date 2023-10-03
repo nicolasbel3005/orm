@@ -50,6 +50,11 @@ router.get('/:id', async(req, res) => {
     // if no product tags, just respond
     res.status(200).json(product);
   })
+  .then((productTagIds) => res.status(200).json(productTagIds))
+    .catch((err) => {
+      console.log(err);
+      res.status(400).json(err);
+    });
 });
 
 // create new product
@@ -67,13 +72,6 @@ router.get('/:id', async(req, res) => {
       tagIds: [1, 2, 3, 4]
     }
   */
-  
-    .then((productTagIds) => res.status(200).json(productTagIds))
-    .catch((err) => {
-      console.log(err);
-      res.status(400).json(err);
-    });
-    
 // update product
 router.put('/:id', (req, res) => {
   // update product data

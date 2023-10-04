@@ -19,9 +19,9 @@ console.log (tags)
 router.get('/:id', async(req, res) => {
   let id = req.params.id 
   // find a single tag by its `id`
-  const tags = await Category.findByPk(id,{
+  const tags = await Tag.findByPk(id,{
     include:{
-      model:Tag,
+      model:Product,
     //   attributes: ['tag_name', "tag"]
      }
   });
